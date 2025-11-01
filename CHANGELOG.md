@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2025-11-01
+
+### Documentation
+- Enhanced README description highlighting key features and use cases
+- Complete inline API documentation with comprehensive doc comments:
+  - `FileType` class with detailed usage examples and method descriptions
+  - `ExtensionsGrouping` class with categorization explanation
+  - `ExtensionGroupFilter` class with filter logic documentation
+  - `FileUtil` class with MIME detection examples and magic number reference
+- All public APIs now documented with parameters, return values, and code examples
+- Updated CONTRIBUTING.md with project-specific guidelines and workflows
+- Removed Google CLA references and customized for file_type_plus project
+
+### Fixed
+- Resolved 40 linting issues for full compliance with `dart_flutter_team_lints`
+- Removed redundant null arguments in all example files
+- Converted to expression function bodies where appropriate (file_manager_demo.dart)
+
+### Changed
+- Updated repository references from `file-type` to `file_type_plus`
+- Updated git remote origin to match new repository name
+
 ## [0.1.0] - 2025-11-01
 
 ### Added
@@ -72,4 +94,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Performance optimizations
 - Additional MIME type mappings
 
-[0.1.0]: https://github.com/hossameldinmi/file-type/releases/tag/v0.1.0
+[0.1.1]: https://github.com/hossameldinmi/file_type_plus/releases/tag/v0.1.1
+[0.1.0]: https://github.com/hossameldinmi/file_type_plus/releases/tag/v0.1.0

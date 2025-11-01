@@ -11,7 +11,7 @@
 /// ```dart
 /// import 'package:your_package_name/your_library_name.dart';
 /// ```
-library;
+library file_type_plus;
 
 export 'src/extension_grouping.dart';
 export 'src/file_type.dart';

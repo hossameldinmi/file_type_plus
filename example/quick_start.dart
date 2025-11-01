@@ -11,7 +11,7 @@
 /// - path_detection.dart
 /// - bytes_detection.dart
 /// - filtering_files.dart
-library;
+library quick_start;
 
 import 'package:file_type_plus/file_type_plus.dart';
 
