@@ -1,6 +1,6 @@
 # Examples
 
-This directory contains comprehensive examples demonstrating various features of the `file_type` package.
+This directory contains comprehensive examples demonstrating various features of the `file_type_plus` package.
 
 ## Quick Start
 
@@ -218,5 +218,5 @@ final media = files.where((f) {
 ## See Also
 
 - [Package Documentation](../README.md)
-- [API Reference](https://pub.dev/documentation/file_type/latest/)
+- [API Reference](https://pub.dev/documentation/file_type_plus/latest/)
 - [Test Files](../test/) - Additional usage examples in tests

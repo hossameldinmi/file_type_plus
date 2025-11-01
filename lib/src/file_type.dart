@@ -1,7 +1,6 @@
 import 'dart:typed_data';
-
 import 'package:equatable/equatable.dart';
-import 'package:file_type/file_type.dart';
+import 'package:file_type_plus/file_type_plus.dart';
 
 class FileType extends Equatable {
   final String value;

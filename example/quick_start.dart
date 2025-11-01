@@ -2,7 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-/// Quick Start Guide for the file_type package.
+/// Quick Start Guide for the file_type_plus package.
 ///
 /// This example shows the most common use cases in a simple format.
 ///
@@ -13,7 +13,7 @@
 /// - filtering_files.dart
 library;
 
-import 'package:file_type/file_type.dart';
+import 'package:file_type_plus/file_type_plus.dart';
 
 void main() {
   // 1. Detect from extension

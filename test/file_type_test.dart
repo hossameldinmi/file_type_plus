@@ -1,4 +1,4 @@
-import 'package:file_type/src/file_type.dart';
+import 'package:file_type_plus/src/file_type.dart';
 import 'package:test/test.dart';
 import 'assets/fixture.dart';
 

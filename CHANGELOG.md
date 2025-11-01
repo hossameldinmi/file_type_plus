@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2025-11-01
 
 ### Added
-- Initial release of the file_type package
+- Initial release of the file_type_plus package
 - Core `FileType` class with support for 7 file type categories:
   - Image files (jpg, png, gif, bmp, svg, webp, etc.)
   - Audio files (mp3, wav, flac, aac, ogg, etc.)

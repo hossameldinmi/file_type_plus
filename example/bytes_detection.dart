@@ -5,7 +5,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:file_type/file_type.dart';
+import 'package:file_type_plus/file_type_plus.dart';
 
 /// Examples of detecting file types from byte data.
 void main() {

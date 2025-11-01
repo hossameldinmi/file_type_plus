@@ -19,7 +19,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  file_type: ^0.1.0
+  file_type_plus: ^0.1.0
 ```
 
 Then run:
@@ -33,7 +33,7 @@ dart pub get
 ### Basic Usage
 
 ```dart
-import 'package:file_type/file_type.dart';
+import 'package:file_type_plus/file_type_plus.dart';
 
 // Detect from file extension
 final type = FileType.fromExtensionOrMime(extension: 'jpg');
