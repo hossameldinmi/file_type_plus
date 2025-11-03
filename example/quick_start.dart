@@ -28,21 +28,25 @@ void main() {
   print('\n3. From Path:');
   print('   photo.jpg -> ${FileType.fromPath('photo.jpg').value}');
 
-  // 4. Filter files
-  print('\n4. Filter Files:');
+  // 4. Detect from category name
+  print('\n4. From Category Name:');
+  print('   video -> ${FileType.fromName('video').value}');
+
+  // 5. Filter files
+  print('\n5. Filter Files:');
   final files = ['photo.jpg', 'song.mp3', 'video.mp4', 'doc.pdf'];
   final images = files.where((f) => FileType.fromPath(f) == FileType.image).toList();
   print('   Images: $images');
 
-  // 5. Multiple types
-  print('\n5. Multiple Types:');
+  // 6. Multiple types
+  print('\n6. Multiple Types:');
   final media = files.where((f) {
     final type = FileType.fromPath(f);
     return type.isAny([FileType.image, FileType.audio, FileType.video]);
   }).toList();
   print('   Media: $media');
 
-  // 6. All types
-  print('\n6. Available Types:');
+  // 7. All types
+  print('\n7. Available Types:');
   FileType.values.forEach((t) => print('   - ${t.value}'));
 }
