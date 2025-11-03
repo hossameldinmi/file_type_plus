@@ -207,4 +207,49 @@ class FileType extends Equatable {
   /// }
   /// ```
   static final values = [image, audio, video, document, html, archive, other];
+
+  /// Creates a FileType from a string value.
+  ///
+  /// This factory constructor looks up a FileType by its category name string.
+  /// Useful when deserializing from JSON, databases, or other string-based formats.
+  ///
+  /// Parameters:
+  /// - [value] - The category name string to look up. Valid values are:
+  ///   'image', 'audio', 'video', 'document', 'html', 'archive', or 'other'.
+  ///   Case-sensitive.
+  ///
+  /// Returns the matching [FileType] constant, or [FileType.other] if the
+  /// value doesn't match any known category.
+  ///
+  /// Example:
+  /// ```dart
+  /// // From JSON deserialization
+  /// final json = {'fileType': 'image', 'name': 'photo.jpg'};
+  /// final type = FileType.fromValue(json['fileType']);
+  /// print(type == FileType.image); // true
+  ///
+  /// // From string values
+  /// final type1 = FileType.fromValue('video');
+  /// final type2 = FileType.fromValue('audio');
+  /// final type3 = FileType.fromValue('unknown');
+  ///
+  /// print(type1.value); // 'video'
+  /// print(type2.value); // 'audio'
+  /// print(type3.value); // 'other' (fallback)
+  ///
+  /// // Database lookup
+  /// final dbValue = 'document';
+  /// final fileType = FileType.fromValue(dbValue);
+  /// if (fileType == FileType.document) {
+  ///   print('This is a document');
+  /// }
+  /// ```
+  factory FileType.fromValue(String value) {
+    for (var fileType in values) {
+      if (fileType.value == value) {
+        return fileType;
+      }
+    }
+    return other;
+  }
 }
