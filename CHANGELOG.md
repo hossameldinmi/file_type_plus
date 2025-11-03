@@ -8,13 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.2] - 2025-11-03
 
 ### Added
-- `FileType.fromValue()` factory constructor for creating FileType from string values
+- `FileType.fromName()` factory constructor for creating FileType from category name strings
 - Support for deserializing FileType from JSON, databases, and string-based formats
 - SECURITY.md file with comprehensive security policy and vulnerability reporting guidelines
 
 ### Documentation
-- Complete inline documentation for `FileType.fromValue()` method with examples
-- Updated README with `fromValue()` usage example
+- Complete inline documentation for `FileType.fromName()` method with examples
+- Updated README with `fromName()` usage example
 - Security policy documentation with best practices
 
 ## [0.1.1] - 2025-11-01

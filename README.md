@@ -78,8 +78,8 @@ final bytes = Uint8List.fromList([0xFF, 0xD8, 0xFF]);
 final type = FileType.fromBytes(bytes, null);
 print(type.value); // image
 
-// Detect from string value (useful for deserialization)
-final type = FileType.fromValue('video');
+// Detect from category name (useful for deserialization)
+final type = FileType.fromName('video');
 print(type.value); // video
 ```
 

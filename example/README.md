@@ -21,6 +21,7 @@ dart run example/quick_start.dart      # 👈 Start here!
 dart run example/basic_usage.dart
 dart run example/path_detection.dart
 dart run example/bytes_detection.dart
+dart run example/deserialization.dart
 dart run example/filtering_files.dart
 dart run example/html_filtering.dart
 dart run example/advanced_usage.dart
@@ -97,7 +98,25 @@ Detecting file types from byte data (magic numbers).
 dart run example/bytes_detection.dart
 ```
 
-### 4. `filtering_files.dart`
+### 4. `deserialization.dart`
+Using `FileType.fromName()` for JSON and database deserialization.
+
+**Topics covered:**
+- JSON deserialization
+- Multiple files from JSON
+- Database record simulation
+- Configuration files
+- API response processing
+- Handling unknown types
+- Custom class with FileType
+- Filtering deserialized data
+
+**Run:**
+```bash
+dart run example/deserialization.dart
+```
+
+### 5. `filtering_files.dart`
 Filtering and categorizing files by type.
 
 **Topics covered:**
@@ -114,7 +133,7 @@ Filtering and categorizing files by type.
 dart run example/filtering_files.dart
 ```
 
-### 5. `html_filtering.dart`
+### 6. `html_filtering.dart`
 Detecting and filtering HTML files.
 
 **Topics covered:**
@@ -131,7 +150,7 @@ Detecting and filtering HTML files.
 dart run example/html_filtering.dart
 ```
 
-### 6. `advanced_usage.dart`
+### 7. `advanced_usage.dart`
 Advanced use cases and patterns.
 
 **Topics covered:**
@@ -149,7 +168,7 @@ Advanced use cases and patterns.
 dart run example/advanced_usage.dart
 ```
 
-### 7. `file_manager_demo.dart`
+### 8. `file_manager_demo.dart`
 Complete file manager application demonstration.
 
 **Topics covered:**

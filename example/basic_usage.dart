@@ -54,6 +54,18 @@ void main() {
   );
   print('jpg extension + audio/mpeg MIME -> ${extensionPriority.value}'); // image
 
+  print('\n=== From Category Name ===\n');
+
+  // Create FileType from category name (useful for deserialization)
+  final videoFromName = FileType.fromName('video');
+  print("fromName('video') -> ${videoFromName.value}"); // video
+
+  final imageFromName = FileType.fromName('image');
+  print("fromName('image') -> ${imageFromName.value}"); // image
+
+  final unknownName = FileType.fromName('unknown');
+  print("fromName('unknown') -> ${unknownName.value}"); // other (fallback)
+
   print('\n=== Unknown Types ===\n');
 
   // Unknown extensions return 'other'

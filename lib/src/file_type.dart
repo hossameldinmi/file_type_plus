@@ -208,30 +208,30 @@ class FileType extends Equatable {
   /// ```
   static final values = [image, audio, video, document, html, archive, other];
 
-  /// Creates a FileType from a string value.
+  /// Creates a FileType from a category name string.
   ///
   /// This factory constructor looks up a FileType by its category name string.
   /// Useful when deserializing from JSON, databases, or other string-based formats.
   ///
   /// Parameters:
-  /// - [value] - The category name string to look up. Valid values are:
+  /// - [name] - The category name string to look up. Valid names are:
   ///   'image', 'audio', 'video', 'document', 'html', 'archive', or 'other'.
   ///   Case-sensitive.
   ///
   /// Returns the matching [FileType] constant, or [FileType.other] if the
-  /// value doesn't match any known category.
+  /// name doesn't match any known category.
   ///
   /// Example:
   /// ```dart
   /// // From JSON deserialization
   /// final json = {'fileType': 'image', 'name': 'photo.jpg'};
-  /// final type = FileType.fromValue(json['fileType']);
+  /// final type = FileType.fromName(json['fileType']);
   /// print(type == FileType.image); // true
   ///
   /// // From string values
-  /// final type1 = FileType.fromValue('video');
-  /// final type2 = FileType.fromValue('audio');
-  /// final type3 = FileType.fromValue('unknown');
+  /// final type1 = FileType.fromName('video');
+  /// final type2 = FileType.fromName('audio');
+  /// final type3 = FileType.fromName('unknown');
   ///
   /// print(type1.value); // 'video'
   /// print(type2.value); // 'audio'
@@ -239,14 +239,14 @@ class FileType extends Equatable {
   ///
   /// // Database lookup
   /// final dbValue = 'document';
-  /// final fileType = FileType.fromValue(dbValue);
+  /// final fileType = FileType.fromName(dbValue);
   /// if (fileType == FileType.document) {
   ///   print('This is a document');
   /// }
   /// ```
-  factory FileType.fromValue(String value) {
+  factory FileType.fromName(String name) {
     for (var fileType in values) {
-      if (fileType.value == value) {
+      if (fileType.value == name) {
         return fileType;
       }
     }
