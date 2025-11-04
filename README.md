@@ -45,7 +45,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  file_type_plus: ^0.1.2
+  file_type_plus: ^1.0.0
 ```
 
 Then run:
@@ -77,10 +77,6 @@ print(type.value); // image
 final bytes = Uint8List.fromList([0xFF, 0xD8, 0xFF]);
 final type = FileType.fromBytes(bytes, null);
 print(type.value); // image
-
-// Detect from category name (useful for deserialization)
-final type = FileType.fromName('video');
-print(type.value); // video
 ```
 
 ### Filtering Files

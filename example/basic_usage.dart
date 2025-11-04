@@ -4,6 +4,18 @@
 
 import 'package:file_type_plus/file_type_plus.dart';
 
+/// Example of extending FileType using copy constructor
+/// Useful for adding custom metadata or behavior to file types
+class CustomMediaType extends FileType {
+  final Map<String, dynamic> metadata;
+
+  /// Create a custom media type by copying from an existing FileType
+  CustomMediaType(FileType baseType, {required this.metadata}) : super.copy(baseType);
+
+  @override
+  String toString() => 'CustomMediaType($value, metadata: $metadata)';
+}
+
 /// Basic usage examples for the file_type_plus package.
 void main() {
   print('=== Basic File Type Detection ===\n');
@@ -54,17 +66,17 @@ void main() {
   );
   print('jpg extension + audio/mpeg MIME -> ${extensionPriority.value}'); // image
 
-  print('\n=== From Category Name ===\n');
+  print('\n=== Using FileType.copy as Super Constructor ===\n');
 
-  // Create FileType from category name (useful for deserialization)
-  final videoFromName = FileType.fromName('video');
-  print("fromName('video') -> ${videoFromName.value}"); // video
+  // FileType.copy can be used in custom classes as a super constructor
+  // Pass an existing FileType instance (like FileType.video) to copy it
+  final customVideo = CustomMediaType(FileType.video, metadata: {'duration': 120});
+  print('Custom video type: ${customVideo.value}');
+  print('Custom metadata: ${customVideo.metadata}');
 
-  final imageFromName = FileType.fromName('image');
-  print("fromName('image') -> ${imageFromName.value}"); // image
-
-  final unknownName = FileType.fromName('unknown');
-  print("fromName('unknown') -> ${unknownName.value}"); // other (fallback)
+  final customImage = CustomMediaType(FileType.image, metadata: {'width': 1920, 'height': 1080});
+  print('Custom image type: ${customImage.value}');
+  print('Custom metadata: ${customImage.metadata}');
 
   print('\n=== Unknown Types ===\n');
 

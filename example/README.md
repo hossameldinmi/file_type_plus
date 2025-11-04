@@ -19,9 +19,9 @@ To run any example:
 ```bash
 dart run example/quick_start.dart      # 👈 Start here!
 dart run example/basic_usage.dart
+dart run example/constructor_usage.dart
 dart run example/path_detection.dart
 dart run example/bytes_detection.dart
-dart run example/deserialization.dart
 dart run example/filtering_files.dart
 dart run example/html_filtering.dart
 dart run example/advanced_usage.dart
@@ -62,7 +62,25 @@ Basic file type detection using extensions and MIME types.
 dart run example/basic_usage.dart
 ```
 
-### 2. `path_detection.dart`
+### 2. `constructor_usage.dart`
+Using the FileType constructor directly with ExtensionGroupFilter.
+
+**Topics covered:**
+- Direct instantiation with ExtensionGroupFilter
+- Extending FileType with custom properties
+- Creating specialized file type classes
+- Adding metadata to file types
+- Restricted media types with allowed extensions
+- File type validators with size constraints
+- Comparison with static constants
+- Creating instances for all categories
+
+**Run:**
+```bash
+dart run example/constructor_usage.dart
+```
+
+### 3. `path_detection.dart`
 Detecting file types from file paths and URLs.
 
 **Topics covered:**
@@ -80,7 +98,7 @@ Detecting file types from file paths and URLs.
 dart run example/path_detection.dart
 ```
 
-### 3. `bytes_detection.dart`
+### 4. `bytes_detection.dart`
 Detecting file types from byte data (magic numbers).
 
 **Topics covered:**
@@ -96,24 +114,6 @@ Detecting file types from byte data (magic numbers).
 **Run:**
 ```bash
 dart run example/bytes_detection.dart
-```
-
-### 4. `deserialization.dart`
-Using `FileType.fromName()` for JSON and database deserialization.
-
-**Topics covered:**
-- JSON deserialization
-- Multiple files from JSON
-- Database record simulation
-- Configuration files
-- API response processing
-- Handling unknown types
-- Custom class with FileType
-- Filtering deserialized data
-
-**Run:**
-```bash
-dart run example/deserialization.dart
 ```
 
 ### 5. `filtering_files.dart`
