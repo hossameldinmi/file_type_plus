@@ -28,17 +28,13 @@ void main() {
   print('\n3. From Path:');
   print('   photo.jpg -> ${FileType.fromPath('photo.jpg').value}');
 
-  // 4. Detect from category name
-  print('\n4. From Category Name:');
-  print('   video -> ${FileType.fromName('video').value}');
-
-  // 5. Filter files
+  // 4. Filter files
   print('\n5. Filter Files:');
   final files = ['photo.jpg', 'song.mp3', 'video.mp4', 'doc.pdf'];
   final images = files.where((f) => FileType.fromPath(f) == FileType.image).toList();
   print('   Images: $images');
 
-  // 6. Multiple types
+  // 5. Multiple types
   print('\n6. Multiple Types:');
   final media = files.where((f) {
     final type = FileType.fromPath(f);
@@ -46,7 +42,7 @@ void main() {
   }).toList();
   print('   Media: $media');
 
-  // 7. All types
+  // 6. All types
   print('\n7. Available Types:');
   FileType.values.forEach((t) => print('   - ${t.value}'));
 }
