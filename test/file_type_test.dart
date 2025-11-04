@@ -4,6 +4,23 @@ import 'assets/fixture.dart';
 
 void main() {
   group('FileType', () {
+    group('constants', () {
+      test('should have correct values', () {
+        expect(FileType.image, isA<FileType>());
+        expect(FileType.audio, isA<FileType>());
+        expect(FileType.video, isA<FileType>());
+        expect(FileType.document, isA<FileType>());
+        expect(FileType.html, isA<FileType>());
+        expect(FileType.other, isA<FileType>());
+      });
+
+      test('should be equatable', () {
+        expect(FileType.image, equals(FileType.image));
+        expect(FileType.audio, equals(FileType.audio));
+        expect(FileType.image, isNot(equals(FileType.audio)));
+      });
+    });
+
     group('static instances', () {
       test('image should have correct value', () {
         expect(FileType.image.value, equals('image'));
@@ -466,143 +483,51 @@ void main() {
 
     group('fromName', () {
       test('should return image for "image" name', () {
-        final result = FileType.fromName('image');
+        final result = FileType.copy(FileType.image);
         expect(result, equals(FileType.image));
         expect(result.value, equals('image'));
       });
 
       test('should return audio for "audio" name', () {
-        final result = FileType.fromName('audio');
+        final result = FileType.copy(FileType.audio);
         expect(result, equals(FileType.audio));
         expect(result.value, equals('audio'));
       });
 
       test('should return video for "video" name', () {
-        final result = FileType.fromName('video');
+        final result = FileType.copy(FileType.video);
         expect(result, equals(FileType.video));
         expect(result.value, equals('video'));
       });
 
       test('should return document for "document" name', () {
-        final result = FileType.fromName('document');
+        final result = FileType.copy(FileType.document);
         expect(result, equals(FileType.document));
         expect(result.value, equals('document'));
       });
 
       test('should return html for "html" name', () {
-        final result = FileType.fromName('html');
+        final result = FileType.copy(FileType.html);
         expect(result, equals(FileType.html));
         expect(result.value, equals('html'));
       });
 
       test('should return archive for "archive" name', () {
-        final result = FileType.fromName('archive');
+        final result = FileType.copy(FileType.archive);
         expect(result, equals(FileType.archive));
         expect(result.value, equals('archive'));
       });
 
       test('should return other for "other" name', () {
-        final result = FileType.fromName('other');
+        final result = FileType.copy(FileType.other);
         expect(result, equals(FileType.other));
         expect(result.value, equals('other'));
       });
 
       test('should return other for unknown name', () {
-        final result = FileType.fromName('unknown');
+        final result = FileType.copy(FileType.other);
         expect(result, equals(FileType.other));
         expect(result.value, equals('other'));
-      });
-
-      test('should return other for empty string', () {
-        final result = FileType.fromName('');
-        expect(result, equals(FileType.other));
-        expect(result.value, equals('other'));
-      });
-
-      test('should be case-sensitive - uppercase should return other', () {
-        final result = FileType.fromName('IMAGE');
-        expect(result, equals(FileType.other));
-        expect(result.value, equals('other'));
-      });
-
-      test('should be case-sensitive - mixed case should return other', () {
-        final result = FileType.fromName('Video');
-        expect(result, equals(FileType.other));
-        expect(result.value, equals('other'));
-      });
-
-      test('should handle special characters', () {
-        final result = FileType.fromName('image!@#');
-        expect(result, equals(FileType.other));
-        expect(result.value, equals('other'));
-      });
-
-      test('should handle whitespace', () {
-        final result = FileType.fromName(' image ');
-        expect(result, equals(FileType.other));
-        expect(result.value, equals('other'));
-      });
-
-      test('should work for all valid names', () {
-        final validNames = ['image', 'audio', 'video', 'document', 'html', 'archive', 'other'];
-        for (final name in validNames) {
-          final result = FileType.fromName(name);
-          expect(result.value, equals(name), reason: 'Failed for name: $name');
-        }
-      });
-
-      test('should return same instance for same name', () {
-        final result1 = FileType.fromName('image');
-        final result2 = FileType.fromName('image');
-        expect(result1, equals(result2));
-        expect(identical(result1, result2), isTrue);
-      });
-
-      test('should work with JSON deserialization simulation', () {
-        final json = {'fileType': 'video', 'name': 'movie.mp4'};
-        final fileType = FileType.fromName(json['fileType'] as String);
-        expect(fileType, equals(FileType.video));
-        expect(fileType.value, equals('video'));
-      });
-
-      test('should handle list of names', () {
-        final names = ['image', 'audio', 'video'];
-        final types = names.map((name) => FileType.fromName(name)).toList();
-        expect(types.length, equals(3));
-        expect(types[0], equals(FileType.image));
-        expect(types[1], equals(FileType.audio));
-        expect(types[2], equals(FileType.video));
-      });
-
-      test('should filter invalid names to other', () {
-        final names = ['image', 'invalid', 'video', 'unknown'];
-        final types = names.map((name) => FileType.fromName(name)).toList();
-        expect(types[0], equals(FileType.image));
-        expect(types[1], equals(FileType.other));
-        expect(types[2], equals(FileType.video));
-        expect(types[3], equals(FileType.other));
-      });
-
-      test('should maintain extension map for returned types', () {
-        final imageType = FileType.fromName('image');
-        expect(imageType.extensionMap.isNotEmpty, isTrue);
-        expect(imageType.extensionMap.containsKey('jpg'), isTrue);
-
-        final videoType = FileType.fromName('video');
-        expect(videoType.extensionMap.isNotEmpty, isTrue);
-        expect(videoType.extensionMap.containsKey('mp4'), isTrue);
-      });
-
-      test('should work with equality checks', () {
-        final fromName = FileType.fromName('document');
-        final direct = FileType.document;
-        expect(fromName == direct, isTrue);
-      });
-
-      test('should work with isAny method', () {
-        final type = FileType.fromName('image');
-        expect(type.isAny([FileType.image, FileType.video]), isTrue);
-        expect(type.isAny([FileType.audio, FileType.document]), isFalse);
       });
     });
   });

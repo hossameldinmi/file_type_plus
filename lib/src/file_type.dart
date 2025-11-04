@@ -36,12 +36,51 @@ class FileType extends Equatable {
   /// Values are the corresponding MIME types (e.g., 'image/jpeg', 'audio/mpeg').
   final Map<String, String> extensionMap;
 
-  /// Private constructor that creates a FileType from an extension group filter.
+  /// Creates a FileType from an extension group filter.
   ///
-  /// [groupFilter] - The filter that defines this file type category.
-  FileType._(ExtensionGroupFilter groupFilter)
+  /// This constructor allows you to create FileType instances using predefined
+  /// category filters. It's primarily used internally to create the static
+  /// file type constants (image, audio, video, etc.), but can also be used
+  /// to create custom file types or extend the FileType class.
+  ///
+  /// The [groupFilter] parameter defines the category and its extension mapping.
+  /// Available filters include:
+  /// - [ExtensionGroupFilter.image] - Image files
+  /// - [ExtensionGroupFilter.audio] - Audio files
+  /// - [ExtensionGroupFilter.video] - Video files
+  /// - [ExtensionGroupFilter.document] - Document files
+  /// - [ExtensionGroupFilter.html] - HTML files
+  /// - [ExtensionGroupFilter.archive] - Archive files
+  /// - [ExtensionGroupFilter.other] - Other/unknown files
+  ///
+  /// Example:
+  /// ```dart
+  /// // Create a FileType instance using a filter
+  /// final imageType = FileType(ExtensionGroupFilter.image);
+  /// print(imageType.value); // 'image'
+  ///
+  /// // Use in a custom class
+  /// class CustomFileType extends FileType {
+  ///   final String customProperty;
+  ///
+  ///   CustomFileType(ExtensionGroupFilter filter, this.customProperty)
+  ///       : super(filter);
+  /// }
+  /// ```
+  ///
+  /// See also:
+  /// - [FileType.copy] for creating a FileType from another FileType instance
+  /// - [FileType.fromExtensionOrMime] for detecting file types from extensions or MIME types
+  FileType(ExtensionGroupFilter groupFilter)
       : value = groupFilter.name,
         extensionMap = ExtensionsGrouping.categorizedExtensions[groupFilter.name]!;
+
+  /// Creates a FileType from another FileType enum value.
+  ///
+  /// [value] - The FileType enum value to copy.
+  FileType.copy(FileType value)
+      : value = value.value,
+        extensionMap = value.extensionMap;
 
   /// Checks if this file type matches any type in the provided list.
   ///
@@ -64,25 +103,25 @@ class FileType extends Equatable {
   bool isAnyType(List<Type> list) => list.contains(runtimeType);
 
   /// Image file type (jpg, png, gif, svg, webp, bmp, ico, etc.).
-  static final image = FileType._(ExtensionGroupFilter.image);
+  static final image = FileType(ExtensionGroupFilter.image);
 
   /// Audio file type (mp3, wav, flac, aac, ogg, m4a, etc.).
-  static final audio = FileType._(ExtensionGroupFilter.audio);
+  static final audio = FileType(ExtensionGroupFilter.audio);
 
   /// Video file type (mp4, avi, mov, webm, mkv, flv, m3u8, etc.).
-  static final video = FileType._(ExtensionGroupFilter.video);
+  static final video = FileType(ExtensionGroupFilter.video);
 
   /// Document file type (pdf, doc, docx, txt, xls, xlsx, ppt, pptx, epub, etc.).
-  static final document = FileType._(ExtensionGroupFilter.document);
+  static final document = FileType(ExtensionGroupFilter.document);
 
   /// HTML file type (html, htm, xhtml, xht).
-  static final html = FileType._(ExtensionGroupFilter.html);
+  static final html = FileType(ExtensionGroupFilter.html);
 
   /// Archive file type (zip, rar, tar, gz, 7z, bz2, etc.).
-  static final archive = FileType._(ExtensionGroupFilter.archive);
+  static final archive = FileType(ExtensionGroupFilter.archive);
 
   /// Fallback type for unrecognized or unclassified files.
-  static final other = FileType._(ExtensionGroupFilter.other);
+  static final other = FileType(ExtensionGroupFilter.other);
 
   /// Creates a FileType from a file extension or MIME type.
   ///
@@ -207,49 +246,4 @@ class FileType extends Equatable {
   /// }
   /// ```
   static final values = [image, audio, video, document, html, archive, other];
-
-  /// Creates a FileType from a category name string.
-  ///
-  /// This factory constructor looks up a FileType by its category name string.
-  /// Useful when deserializing from JSON, databases, or other string-based formats.
-  ///
-  /// Parameters:
-  /// - [name] - The category name string to look up. Valid names are:
-  ///   'image', 'audio', 'video', 'document', 'html', 'archive', or 'other'.
-  ///   Case-sensitive.
-  ///
-  /// Returns the matching [FileType] constant, or [FileType.other] if the
-  /// name doesn't match any known category.
-  ///
-  /// Example:
-  /// ```dart
-  /// // From JSON deserialization
-  /// final json = {'fileType': 'image', 'name': 'photo.jpg'};
-  /// final type = FileType.fromName(json['fileType']);
-  /// print(type == FileType.image); // true
-  ///
-  /// // From string values
-  /// final type1 = FileType.fromName('video');
-  /// final type2 = FileType.fromName('audio');
-  /// final type3 = FileType.fromName('unknown');
-  ///
-  /// print(type1.value); // 'video'
-  /// print(type2.value); // 'audio'
-  /// print(type3.value); // 'other' (fallback)
-  ///
-  /// // Database lookup
-  /// final dbValue = 'document';
-  /// final fileType = FileType.fromName(dbValue);
-  /// if (fileType == FileType.document) {
-  ///   print('This is a document');
-  /// }
-  /// ```
-  factory FileType.fromName(String name) {
-    for (var fileType in values) {
-      if (fileType.value == name) {
-        return fileType;
-      }
-    }
-    return other;
-  }
 }

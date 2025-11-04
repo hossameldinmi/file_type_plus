@@ -19,6 +19,7 @@ To run any example:
 ```bash
 dart run example/quick_start.dart      # 👈 Start here!
 dart run example/basic_usage.dart
+dart run example/constructor_usage.dart
 dart run example/path_detection.dart
 dart run example/bytes_detection.dart
 dart run example/deserialization.dart
@@ -62,7 +63,25 @@ Basic file type detection using extensions and MIME types.
 dart run example/basic_usage.dart
 ```
 
-### 2. `path_detection.dart`
+### 2. `constructor_usage.dart`
+Using the FileType constructor directly with ExtensionGroupFilter.
+
+**Topics covered:**
+- Direct instantiation with ExtensionGroupFilter
+- Extending FileType with custom properties
+- Creating specialized file type classes
+- Adding metadata to file types
+- Restricted media types with allowed extensions
+- File type validators with size constraints
+- Comparison with static constants
+- Creating instances for all categories
+
+**Run:**
+```bash
+dart run example/constructor_usage.dart
+```
+
+### 3. `path_detection.dart`
 Detecting file types from file paths and URLs.
 
 **Topics covered:**
@@ -80,7 +99,7 @@ Detecting file types from file paths and URLs.
 dart run example/path_detection.dart
 ```
 
-### 3. `bytes_detection.dart`
+### 4. `bytes_detection.dart`
 Detecting file types from byte data (magic numbers).
 
 **Topics covered:**
@@ -98,7 +117,7 @@ Detecting file types from byte data (magic numbers).
 dart run example/bytes_detection.dart
 ```
 
-### 4. `deserialization.dart`
+### 5. `deserialization.dart`
 Using `FileType.fromName()` for JSON and database deserialization.
 
 **Topics covered:**
@@ -116,7 +135,7 @@ Using `FileType.fromName()` for JSON and database deserialization.
 dart run example/deserialization.dart
 ```
 
-### 5. `filtering_files.dart`
+### 6. `filtering_files.dart`
 Filtering and categorizing files by type.
 
 **Topics covered:**
@@ -133,7 +152,7 @@ Filtering and categorizing files by type.
 dart run example/filtering_files.dart
 ```
 
-### 6. `html_filtering.dart`
+### 7. `html_filtering.dart`
 Detecting and filtering HTML files.
 
 **Topics covered:**
@@ -150,7 +169,7 @@ Detecting and filtering HTML files.
 dart run example/html_filtering.dart
 ```
 
-### 7. `advanced_usage.dart`
+### 8. `advanced_usage.dart`
 Advanced use cases and patterns.
 
 **Topics covered:**
@@ -168,7 +187,7 @@ Advanced use cases and patterns.
 dart run example/advanced_usage.dart
 ```
 
-### 8. `file_manager_demo.dart`
+### 9. `file_manager_demo.dart`
 Complete file manager application demonstration.
 
 **Topics covered:**
