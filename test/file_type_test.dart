@@ -481,53 +481,53 @@ void main() {
       });
     });
 
-    group('fromName', () {
-      test('should return image for "image" name', () {
+    group('copy constructor', () {
+      test('should copy image type', () {
         final result = FileType.copy(FileType.image);
         expect(result, equals(FileType.image));
         expect(result.value, equals('image'));
       });
 
-      test('should return audio for "audio" name', () {
+      test('should copy audio type', () {
         final result = FileType.copy(FileType.audio);
         expect(result, equals(FileType.audio));
         expect(result.value, equals('audio'));
       });
 
-      test('should return video for "video" name', () {
+      test('should copy video type', () {
         final result = FileType.copy(FileType.video);
         expect(result, equals(FileType.video));
         expect(result.value, equals('video'));
       });
 
-      test('should return document for "document" name', () {
+      test('should copy document type', () {
         final result = FileType.copy(FileType.document);
         expect(result, equals(FileType.document));
         expect(result.value, equals('document'));
       });
 
-      test('should return html for "html" name', () {
+      test('should copy html type', () {
         final result = FileType.copy(FileType.html);
         expect(result, equals(FileType.html));
         expect(result.value, equals('html'));
       });
 
-      test('should return archive for "archive" name', () {
+      test('should copy archive type', () {
         final result = FileType.copy(FileType.archive);
         expect(result, equals(FileType.archive));
         expect(result.value, equals('archive'));
       });
 
-      test('should return other for "other" name', () {
+      test('should copy other type', () {
         final result = FileType.copy(FileType.other);
         expect(result, equals(FileType.other));
         expect(result.value, equals('other'));
       });
 
-      test('should return other for unknown name', () {
-        final result = FileType.copy(FileType.other);
-        expect(result, equals(FileType.other));
-        expect(result.value, equals('other'));
+      test('should maintain extension map', () {
+        final result = FileType.copy(FileType.image);
+        expect(result.extensionMap, equals(FileType.image.extensionMap));
+        expect(result.extensionMap.containsKey('jpg'), isTrue);
       });
     });
   });
