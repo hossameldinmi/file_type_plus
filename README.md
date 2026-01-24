@@ -19,6 +19,7 @@
   <a href="https://opensource.org/licenses/MIT">
     <img alt="MIT License" src="https://img.shields.io/badge/License-MIT-blue.svg">
   </a>
+  <img src="https://img.shields.io/badge/platform-Android%20%7C%20iOS%20%7C%20macOS%20%7C%20Windows%20%7C%20Linux%20%7C%20Web-blue" alt="Platforms">
 </p>
 
 ---
@@ -70,12 +71,12 @@ final type = FileType.fromExtensionOrMime(mimeType: 'image/jpeg');
 print(type.value); // image
 
 // Detect from file path
-final type = FileType.fromPath('photo.jpg', null);
+final type = FileType.fromPath('photo.jpg');
 print(type.value); // image
 
 // Detect from bytes
 final bytes = Uint8List.fromList([0xFF, 0xD8, 0xFF]);
-final type = FileType.fromBytes(bytes, null);
+final type = FileType.fromBytes(bytes);
 print(type.value); // image
 ```
 
@@ -86,12 +87,12 @@ final files = ['photo.jpg', 'song.mp3', 'video.mp4'];
 
 // Filter by single type
 final images = files.where((f) => 
-  FileType.fromPath(f, null) == FileType.image
+  FileType.fromPath(f) == FileType.image
 ).toList();
 
 // Filter by multiple types
 final media = files.where((f) {
-  final type = FileType.fromPath(f, null);
+  final type = FileType.fromPath(f);
   return type.isAny([FileType.image, FileType.audio, FileType.video]);
 }).toList();
 ```

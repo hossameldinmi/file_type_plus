@@ -200,12 +200,12 @@ final type = FileType.fromExtensionOrMime(mimeType: 'image/jpeg');
 print(type.value); // image
 
 // From file path
-final type = FileType.fromPath('photo.jpg', null);
+final type = FileType.fromPath('photo.jpg');
 print(type.value); // image
 
 // From bytes
 final bytes = Uint8List.fromList([0xFF, 0xD8, 0xFF]);
-final type = FileType.fromBytes(bytes, null);
+final type = FileType.fromBytes(bytes);
 print(type.value); // image
 ```
 
@@ -214,12 +214,12 @@ print(type.value); // image
 ```dart
 // Single type
 final images = files.where((f) => 
-  FileType.fromPath(f, null) == FileType.image
+  FileType.fromPath(f) == FileType.image
 ).toList();
 
 // Multiple types
 final media = files.where((f) {
-  final type = FileType.fromPath(f, null);
+  final type = FileType.fromPath(f);
   return type.isAny([FileType.image, FileType.audio, FileType.video]);
 }).toList();
 ```
