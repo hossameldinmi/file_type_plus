@@ -1,10 +1,9 @@
 name: file_type_plus
-version: 1.0.0
+version: 1.0.1
 description: >-
   Utilities for handling media (MIME) types, including determining a type from a
   file extension and file contents.
 repository: https://github.com/hossameldinmi/file_type_plus.git
-
 topics:
   - mime
   - mimetype
